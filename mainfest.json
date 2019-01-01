@@ -1,0 +1,16 @@
+{
+  "short_name": "Year",
+  "name": "Year Progress",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/yearprogress/",
+  "background_color": "#000000",
+  "display": "standalone",
+  "scope": "/yearprogress/",
+  "theme_color": "#000000"
+}
