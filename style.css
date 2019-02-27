@@ -15,12 +15,13 @@ body {
   width: 90%;
   height: 25px;
   max-width: 1000px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 #processbarinner {
   background-color: #fff;
   height: 25px;
+  will-change: width;
 }
 
 #text {
@@ -28,4 +29,48 @@ body {
   font-size: 100px;
   text-align: center;
   word-break: break-all;
+}
+
+#switchcontainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+#switchcontainerinner {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 750px;
+  justify-content: center;
+}
+
+#switchestitle {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.switch {
+  width: 135px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  cursor: pointer;
+  margin: 3px;
+  background-color: #111;
+  border-radius: 3px;
+  transition: .2s;
+  text-align: center;
+}
+
+.switch:hover {
+  background-color: #222;
+}
+
+#title {
+  margin: 0;
+  margin-top: 50px;
+  font-size: 40px;
+  font-weight: bold;
 }
