@@ -19,7 +19,7 @@ function calcPercentage() {
       if(splited[0] < hour) {
         continue;
       }
-      if(splited[1] <= minute) {
+      if(splited[1] <= minute || splited[0] > hour) {
         continue;
       }
       if(i > 0) {
