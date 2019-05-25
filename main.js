@@ -37,6 +37,15 @@ function calcPercentage() {
     start = moment("26.08.2003","DD.MM.YYYY").format("x") * 1;
     // Ausgegangen von 77 Jahren Lebenserwartung (haha so lang leb ich niemals...)
     end = moment("26.08.2080","DD.MM.YYYY").format("x") * 1;
+  } else if(mode == "minute") {
+    start = moment().startOf("minute").format("x") * 1;
+    end = moment().endOf("minute").format("x") * 1;
+  } else if(mode == "hour") {
+    start = moment().startOf("hour").format("x") * 1;
+    end = moment().endOf("hour").format("x") * 1;
+  } else if(mode == "second") {
+    start = moment().startOf("second").format("x") * 1;
+    end = moment().endOf("second").format("x") * 1;
   }
   var dur = end - start;
   var now = moment().format("x");
@@ -60,8 +69,19 @@ function init() {
   window.requestAnimationFrame(update);
   addModeBtn("year","Year Progress");
   addModeBtn("day","Day Progress");
+  addModeBtn("minute","Minute Progress");
+  addModeBtn("hour","Hour Progress");
+  addModeBtn("second","Second Progress");
   addModeBtn("lesson","Lesson Progress (Beta)");
   addModeBtn("lifetime","Lifespan");
+  document.querySelector("#processbar").onclick = e => {
+    var progressText = document.querySelector("#text");
+    if(progressText.style.display === "none") {
+      progressText.style.display = "";
+    } else {
+      progressText.style.display = "none";
+    }
+  };
 }
 
 window.onload = init;

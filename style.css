@@ -15,7 +15,7 @@ body {
   width: 90%;
   height: 25px;
   max-width: 1000px;
-  margin-bottom: 50px;
+  margin: 50px;
 }
 
 #processbarinner {
@@ -26,6 +26,7 @@ body {
 
 #text {
   margin: 50px;
+  margin-bottom: 0;
   font-size: 100px;
   text-align: center;
   word-break: break-all;
