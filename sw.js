@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ppluss-yearprogress-cache-v3';
+const CACHE_NAME = 'ppluss-yearprogress-cache-v4';
 const base = "/yearprogress/";
 var urlsToCache = [
   base,
