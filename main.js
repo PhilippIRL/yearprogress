@@ -1,5 +1,7 @@
 var mode = "year";
-var times = ["7:55","8:00","8:45","8:50","9:35","9:50","9:55","10:40","10:45","11:30","11:45","11:50","12:35","12:40","13:25","13:30","14:10","14:15","15:00","15:05","15:50"];
+var timesEKG = ["7:55","8:00","8:45","8:50","9:35","9:50","9:55","10:40","10:45","11:30","11:45","11:50","12:35","12:40","13:25","13:30","14:10","14:15","15:00","15:05","15:50"];
+var timesHNBK = ["7:30","9:00","9:15","10:45","11:15","12:45","13:00","14:30"];
+var timesHNBK2 = ["8:00","9:30","9:45","11:15","11:45","13:15","13:30","15:00"];
 
 function calcPercentage() {
   var start, end;
@@ -10,8 +12,22 @@ function calcPercentage() {
   } else if(mode == "day") {
     start = moment().startOf("day").format("x") * 1;
     end = moment().endOf("day").format("x") * 1;
-  } else if(mode == "lesson") {
+  } else if(mode.startsWith("lesson")) {
     // ich weiß dass das hier richtig ineffizient ist aber naja ist halt "beta" xd
+
+    var times;
+    switch(mode) {
+      case "lessonekg":
+        times = timesEKG;
+        break;
+      case "lessonhnbk":
+        times = timesHNBK;
+        break;
+      case "lessonhnbk2":
+        times = timesHNBK2;
+        break;
+    }
+
     var hour = moment().hours();
     var minute = moment().minutes();
     for(var i = 0; i < times.length; i++) {
@@ -72,7 +88,9 @@ function init() {
   addModeBtn("minute","Minute Progress");
   addModeBtn("hour","Hour Progress");
   addModeBtn("second","Second Progress");
-  addModeBtn("lesson","Lesson Progress (Beta)");
+  addModeBtn("lessonekg","Lesson Progress EKG");
+  addModeBtn("lessonhnbk","Lesson Progress HNBK");
+  addModeBtn("lessonhnbk2","Lesson Progress HNBK Abzw");
   addModeBtn("lifetime","Lifespan");
   document.querySelector("#processbar").onclick = e => {
     var progressText = document.querySelector("#text");
