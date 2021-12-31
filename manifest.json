@@ -8,9 +8,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/yearprogress/",
-  "background_color": "#000000",
+  "start_url": "/",
+  "background_color": "#333333",
   "display": "standalone",
-  "scope": "/yearprogress/",
-  "theme_color": "#000000"
+  "scope": "/",
+  "theme_color": "#333333"
 }

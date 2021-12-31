@@ -1,3 +1,19 @@
+html {
+  font-size: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 55%;
+  }
+}
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -8,70 +24,50 @@ body {
   align-items: center;
   flex-direction: column;
   color: #fff;
+  gap: 3rem;
 }
 
 #processbar {
   background-color: #222;
   width: 90%;
-  height: 25px;
+  height: 2rem;
   max-width: 1000px;
-  margin: 50px;
+  margin: 0 50px;
+  border-radius: 2rem;
 }
 
 #processbarinner {
   background-color: #fff;
-  height: 25px;
+  height: 2rem;
   will-change: width;
+  border-radius: 2rem;
 }
 
 #text {
-  margin: 50px;
   margin-bottom: 0;
-  font-size: 100px;
+  font-size: 4rem;
   text-align: center;
   word-break: break-all;
+  margin-top: -2rem;
 }
 
 #switchcontainer {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 50px;
 }
 
-#switchcontainerinner {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 750px;
-  justify-content: center;
-}
-
-#switchestitle {
-  margin-bottom: 10px;
-  font-size: 24px;
-}
-
-.switch {
-  width: 135px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 75px;
-  cursor: pointer;
-  margin: 3px;
-  background-color: #111;
-  border-radius: 3px;
-  transition: .2s;
-  text-align: center;
-}
-
-.switch:hover {
+#modeselect {
   background-color: #222;
+  padding: .5rem;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 2rem;
+  display: inline;
 }
 
 #title {
-  margin: 0;
-  margin-top: 50px;
-  font-size: 40px;
+  font-size: 3rem;
   font-weight: bold;
 }

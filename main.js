@@ -1,7 +1,6 @@
 var mode = "year";
 var timesEKG = ["7:55","8:00","8:45","8:50","9:35","9:50","9:55","10:40","10:45","11:30","11:45","11:50","12:35","12:40","13:25","13:30","14:10","14:15","15:00","15:05","15:50"];
 var timesHNBK = ["7:30","9:00","9:15","10:45","11:15","12:45","13:00","14:30"];
-var timesHNBK2 = ["8:00","9:30","9:45","11:15","11:45","13:15","13:30","15:00"];
 
 function calcPercentage() {
   var start, end;
@@ -22,9 +21,6 @@ function calcPercentage() {
         break;
       case "lessonhnbk":
         times = timesHNBK;
-        break;
-      case "lessonhnbk2":
-        times = timesHNBK2;
         break;
     }
 
@@ -81,6 +77,12 @@ function update() {
    window.requestAnimationFrame(update);
 }
 
+let modeHandlers = {}
+
+function onModeSelected(e) {
+  modeHandlers[e.target.value]()
+}
+
 function init() {
   window.requestAnimationFrame(update);
   addModeBtn("year","Year Progress");
@@ -90,7 +92,6 @@ function init() {
   addModeBtn("second","Second Progress");
   addModeBtn("lessonekg","Lesson Progress EKG");
   addModeBtn("lessonhnbk","Lesson Progress HNBK");
-  addModeBtn("lessonhnbk2","Lesson Progress HNBK Abzw");
   addModeBtn("lifetime","Lifespan");
   document.querySelector("#processbar").onclick = e => {
     var progressText = document.querySelector("#text");
@@ -100,6 +101,7 @@ function init() {
       progressText.style.display = "none";
     }
   };
+  document.querySelector('#modeselect').onchange = onModeSelected
 }
 
 window.onload = init;
@@ -113,15 +115,17 @@ function addModeBtn(name, displayName, title) {
   if(!title) {
     title = displayName;
   }
-  var elem = document.createElement("div");
+  var elem = document.createElement("option");
   elem.className = "switch";
   elem.innerText = displayName;
-  elem.onclick = function(){setMode(name,title)};
-  document.getElementById("switchcontainerinner").appendChild(elem);
+  elem.value = name
+  modeHandlers[name] = () => setMode(name, title)
+  document.getElementById("modeselect").appendChild(elem);
 }
 
 function setMode(modename,modetitle) {
   mode = modename;
   document.getElementById("title").innerText = modetitle;
   document.title = modetitle;
+  document.getElementById("modeselect").value = modename
 }

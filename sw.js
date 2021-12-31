@@ -1,12 +1,16 @@
-const CACHE_NAME = 'ppluss-yearprogress-cache-v5';
-const base = "/yearprogress/";
+const APP_NAME = 'ppluss-yearprogress'
+const APP_VERSION = '0.0.2'
+const SCOPE = '/'
+
+const CACHE_NAME = APP_NAME + '-v' + APP_VERSION
+
 var urlsToCache = [
-  base,
-  base + "style.css",
-  base + "main.js",
-  base + "moment.js",
-  base + "manifest.json",
-  base + "icon.png"
+  SCOPE,
+  SCOPE + "style.css",
+  SCOPE + "main.js",
+  SCOPE + "moment.js",
+  SCOPE + "manifest.json",
+  SCOPE + "icon.png"
 ];
 
 self.addEventListener('install', function(event) {
