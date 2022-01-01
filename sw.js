@@ -1,5 +1,5 @@
 const APP_NAME = 'ppluss-yearprogress'
-const APP_VERSION = '0.0.2'
+const APP_VERSION = '0.0.3'
 const SCOPE = '/'
 
 const CACHE_NAME = APP_NAME + '-v' + APP_VERSION
