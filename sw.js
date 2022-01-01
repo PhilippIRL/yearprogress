@@ -1,36 +1,37 @@
 const APP_NAME = 'ppluss-yearprogress'
 const APP_VERSION = '0.0.3'
-const SCOPE = '/'
+const APP_ROOT = '/'
 
 const CACHE_NAME = APP_NAME + '-v' + APP_VERSION
 
-var urlsToCache = [
-  SCOPE,
-  SCOPE + "style.css",
-  SCOPE + "main.js",
-  SCOPE + "moment.js",
-  SCOPE + "manifest.json",
-  SCOPE + "icon.png"
-];
+const appFiles = [
+    '',
+    'style.css',
+    'main.js',
+    'moment.js',
+    'manifest.json',
+    'icon.png',
+].map(file => APP_ROOT + file)
 
-self.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        return cache.addAll(urlsToCache);
-      })
-  );
-});
-
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        if (response) {
-          return response;
+self.addEventListener('install', event => {
+    event.waitUntil((async () => {
+        // clear all caches on reinstall
+        const oldCaches = await caches.keys()
+        for(const cacheName of oldCaches) {
+            await caches.delete(cacheName)
         }
-        return fetch(event.request);
-      }
-    )
-  );
-});
+    
+        const cache = await caches.open(CACHE_NAME)
+        await cache.addAll(appFiles)
+    })())
+})
+
+self.addEventListener('fetch', event => {
+    event.respondWith((async () => {
+        const cache = await caches.open(CACHE_NAME)
+        const match = await cache.match(event.request)
+        if(match) return match
+
+        return await fetch(event.request)
+    })())
+})
